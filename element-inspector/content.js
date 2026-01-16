@@ -106,7 +106,7 @@
 
         output += `HTML Element: ${outerHTML}`;
 
-        return '```\n' + output + '\n```';
+        return '\\' + output + '\\';
     }
 
     // Get DOM path in compact format (tagName#id.class1.class2)

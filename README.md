@@ -75,12 +75,12 @@ element-inspector/
 The extension copies data in a **compact format** that's perfect for AI prompts:
 
 ```
-DOM Path: div#root > div.min-h-screen.font-mono > header.fixed.top-0.left-0.right-0.z-50 > button.px-4.h-8.flex.items-center
+\DOM Path: div#root > div.min-h-screen.font-mono > header.fixed.top-0.left-0.right-0.z-50 > button.px-4.h-8.flex.items-center
 Position: top=16px, left=1261px, width=73px, height=32px
 React Component: Header
 Attributes: class="px-4 h-8 flex items-center justify-center text-sm font-bold uppercase", style="border: 1px solid var(--border-primary);"
 Computed Styles: color: rgb(255, 255, 255), fontSize: 14px, fontFamily: ui-monospace, display: flex, position: static
-HTML Element: <button class="px-4 h-8 flex items-center justify-center text-sm font-bold uppercase transition-all duration-200 hover:opacity-70 rounded-full" style="border: 1px solid var(--border-primary);">LOGIN</button>
+HTML Element: <button class="px-4 h-8 flex items-center justify-center text-sm font-bold uppercase transition-all duration-200 hover:opacity-70 rounded-full" style="border: 1px solid var(--border-primary);">LOGIN</button>\
 ```
 
 ## 🔧 Development
