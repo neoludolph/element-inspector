@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element Inspector</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <div class="logo">🔍</div>
+      <h1>Element Inspector</h1>
+    </div>
+    
+    <p class="description">
+      Click to inspect any element and copy its info to clipboard
+    </p>
+    
+    <button id="startBtn" class="start-btn">
+      <span class="btn-icon">🎯</span>
+      Start Inspecting
+    </button>
+    
+    <div id="status" class="status"></div>
+    
+    <div class="footer">
+      <span>Copies: Outer HTML, Styles, JS Path</span>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
