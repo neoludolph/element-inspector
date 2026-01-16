@@ -82,12 +82,10 @@
 
     // Format the clipboard content as compact format for AI prompts
     function formatClipboardContent(element) {
-        const domPath = getDomPath(element);
+        const domPath = getDomPathCompact(element);
         const rect = element.getBoundingClientRect();
         const reactComponent = getReactComponentName(element);
-        const attributes = getAttributesCompact(element);
-        const computedStyles = getComputedStylesCompact(element);
-        const outerHTML = element.outerHTML;
+        const htmlCompact = getCompactHtml(element);
 
         let output = `DOM Path: ${domPath}\n`;
         output += `Position: top=${Math.round(rect.top)}px, left=${Math.round(rect.left)}px, width=${Math.round(rect.width)}px, height=${Math.round(rect.height)}px\n`;
@@ -96,17 +94,64 @@
             output += `React Component: ${reactComponent}\n`;
         }
 
-        if (attributes) {
-            output += `Attributes: ${attributes}\n`;
-        }
-
-        if (computedStyles) {
-            output += `Computed Styles: ${computedStyles}\n`;
-        }
-
-        output += `HTML Element: ${outerHTML}`;
+        output += `HTML Element: ${htmlCompact}`;
 
         return '`' + output + '`';
+    }
+
+    // Get DOM path in ultra-compact format (abbreviate long class names)
+    function getDomPathCompact(element) {
+        const path = [];
+        let current = element;
+
+        while (current && current !== document.body && current !== document) {
+            let part = current.tagName.toLowerCase();
+
+            if (current.id) {
+                part += '#' + current.id;
+            }
+
+            if (current.className && typeof current.className === 'string') {
+                const classes = current.className.trim().split(/\s+/).filter(c => c && !c.startsWith('__element-inspector'));
+                if (classes.length > 0) {
+                    // Abbreviate each class: keep first 5 chars + "." if longer
+                    const abbreviatedClasses = classes.map(c => c.length > 8 ? c.substring(0, 5) + '.' : c);
+                    part += '.' + abbreviatedClasses.join('.');
+                }
+            }
+
+            path.unshift(part);
+            current = current.parentElement;
+        }
+
+        return path.join(' > ');
+    }
+
+    // Get compact HTML representation (opening tag with text content preview)
+    function getCompactHtml(element) {
+        const tagName = element.tagName.toLowerCase();
+        const attrs = [];
+
+        for (const attr of element.attributes) {
+            if (!attr.name.startsWith('__element-inspector') && !attr.name.startsWith('data-cursor')) {
+                attrs.push(`${attr.name}="${attr.value}"`);
+            }
+        }
+
+        const attrStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
+
+        // Get direct text content only (no nested elements)
+        const textContent = Array.from(element.childNodes)
+            .filter(node => node.nodeType === Node.TEXT_NODE)
+            .map(node => node.textContent.trim())
+            .filter(text => text.length > 0)
+            .join(' ')
+            .trim();
+
+        const textPreview = textContent.length > 30 ? textContent.substring(0, 30) + '...' : textContent;
+        const innerPart = textPreview ? textPreview : (element.children.length > 0 ? '...' : '');
+
+        return `<${tagName}${attrStr}>${innerPart}</${tagName}>`;
     }
 
     // Get DOM path in compact format (tagName#id.class1.class2)
