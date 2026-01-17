@@ -2,7 +2,7 @@
 
 A Chrome Extension that allows you to inspect HTML elements on web pages and automatically copy their information to the clipboard.
 
-## 🎯 Features
+## Features
 
 - **Easy Activation**: Click the extension icon to start inspection mode
 - **Element Selection**: Hover over any element on the webpage
@@ -13,7 +13,7 @@ A Chrome Extension that allows you to inspect HTML elements on web pages and aut
   - **Smart HTML**: A compact representation of the element's HTML including attributes and text preview
 - **Optimization**: All data is wrapped in backticks and formatted to minimize token usage in chat interfaces
 
-## 📦 Installation
+## Installation
 
 ### From Source
 
@@ -23,7 +23,7 @@ A Chrome Extension that allows you to inspect HTML elements on web pages and aut
 4. Click **Load unpacked**
 5. Select the `element-inspector` folder
 
-## 🚀 Usage
+## Usage
 
 1. **Activate Extension**: Click the Element Inspector icon in the Chrome toolbar
 2. **Start Inspection Mode**: Click "Start Inspecting" in the popup
@@ -39,7 +39,7 @@ A Chrome Extension that allows you to inspect HTML elements on web pages and aut
 - The format is optimized for maximum readability and minimal space in chat interfaces
 - React components are automatically detected and displayed (if available)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 element-inspector/
@@ -53,23 +53,25 @@ element-inspector/
 └── README.md             # This file
 ```
 
-## 🛠️ Technical Details
+## Technical Details
 
 - **Manifest Version**: 3
-- **Permissions**: 
+- **Permissions**:
   - `activeTab`: Access to the active tab
   - `scripting`: Injection of content scripts
 - **Content Script**: Dynamically injected when inspection mode is activated
 - **Communication**: Uses Chrome's Message Passing API
 
-## 🎨 Features in Detail
+## Features in Detail
 
 ### Visual Feedback
+
 - Elements are highlighted with a blue overlay on hover
 - Smooth transitions for a pleasant user experience
 - Cursor changes to a crosshair in inspection mode
 
 ### Copied Data
+
 The extension copies data in a compact, backtick-wrapped format designed for AI prompts:
 
 ```
@@ -79,19 +81,21 @@ React Component: Header
 HTML Element: <button class="px-4 h-8 flex items-center justify-center text-sm font-bold uppercase transition-all duration-200 hover:opacity-70 rounded-full" style="border: 1px solid var(--border-primary);">LOGIN</button>`
 ```
 
-## 🔧 Development
+## Development
 
 ### Prerequisites
+
 - Google Chrome Browser
 - Basic knowledge of HTML, CSS, and JavaScript
 
 ### Testing Local Changes
+
 1. Make changes to the code
 2. Go to `chrome://extensions/`
 3. Click the reload icon on the Element Inspector extension
 4. Test the changes on any webpage
 
-## 📝 License
+## License
 
 MIT License
 
@@ -115,7 +119,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## 🤝 Contributing
+## Contributing
 
 Feedback and suggestions for improvement are welcome!
 
